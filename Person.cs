@@ -17,7 +17,7 @@ namespace BankVM
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int Age { get; set; }
-        public string IBAN { get; set; }//strig
+        public string IBAN { get; set; }
         public decimal Amount { get; set; } //"decimal" се използва за финансови изчисления
         public string Pass { get; set; }
 
