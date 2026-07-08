@@ -14,24 +14,27 @@ namespace BankVM
 
         public static List<Person> ReadPeople()
         {
-            List<Person> cars = new List<Person>();
+            List<Person> people = new List<Person>();
             string[] lines = File.ReadAllLines(_filePath); //ИЗИСКВА USING SYSTEM.IO;
 
             for (int i = 1; i < lines.Length; i++) //Прескачаме антетката която е i=0
             {
                 string[] parts = lines[i].Split(',');
 
-                string brand = parts[0];
-                string model = parts[1];
-                int year = int.Parse(parts[2]);
-                int price = int.Parse(parts[3]);
+                int id = int.Parse(parts[0]);
+                string firstName = parts[1];
+                string lastName = parts[2];
+                int age = int.Parse(parts[3]);
+                int iban = int.Parse(parts[3]);
+                decimal amount = decimal.Parse(parts[5]);
+                string pass = parts[6];
 
-                Person car = new Person(id, firstName, lastName, age, iban, amount, pass);
-                cars.Add(car);
+                Person person = new Person(id, firstName, lastName, age, iban, amount, pass);
+                people.Add(person);
 
             }
 
-            return cars;
+            return people;
         }
 
         public static void UpdatePeopleFile()
@@ -40,7 +43,7 @@ namespace BankVM
             List<string> lines = new List<string>();
 
             lines.Add(antetka);
-            foreach (Person c in Person.MyPeople) //обикаля
+            foreach (Person c in Person.People) //обикаля
             {
                 string info = c.ToString();//извлича като цсв текст
                 lines.Add(info);
