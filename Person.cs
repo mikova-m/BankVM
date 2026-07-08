@@ -139,6 +139,30 @@ namespace BankVM
 
         }
 
-       // comlete
+        public static void ChangePassword(Person user)
+        {
+            Console.Write("Въведете нова парола: ");
+            string newPassword = Console.ReadLine();
+            if (!string.IsNullOrWhiteSpace(newPassword))//help 
+            {
+                user.Pass = newPassword;
+                Console.WriteLine("Паролата е успешно променена.");
+            }
+            else
+            {
+                Console.WriteLine("Паролата не може да бъде празна.");
+            }
+        }
+
+        public static void Exit(Person user)
+        {
+            ReadWrite.UpdatePeopleFile();
+            Console.WriteLine("Данните са записани. Излизане от системата...");
+            Console.ReadKey();
+            Login();
+        }
+
+
+
     }
 }
