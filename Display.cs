@@ -8,8 +8,8 @@ namespace BankVM
 {
     internal class Display
     {
-         public static void AccountMenu(string[] args)
-        {
+         public static void AccountMenu()
+         {
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("\n=== Моля изберете ===");
             Console.ResetColor();
@@ -31,7 +31,7 @@ namespace BankVM
 
             switch (choose)//Има грешка
             {
-                case 1: Person.AddMoney(); break;
+                case 1: Person.AddMoney(Person.currentPerson); break;
                 case 2: Person.GetMoney(); break;
                 case 3: Person.SendMoney(); break;
                 case 4: Person.ChangePass(); break;

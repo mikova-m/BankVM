@@ -17,12 +17,12 @@ namespace BankVM
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int Age { get; set; }
-        public int IBAN { get; set; }//strig
+        public string IBAN { get; set; }//strig
         public decimal Amount { get; set; } //"decimal" се използва за финансови изчисления
         public string Pass { get; set; }
 
 
-        public Person(int id, string firstName, string lastName, int age, int iban, decimal amount, string pass)
+        public Person(int id, string firstName, string lastName, int age, string iban, decimal amount, string pass)
         {
             ID = id;
             FirstName = firstName;
@@ -63,7 +63,7 @@ namespace BankVM
                 Console.WriteLine($"Добре дошъл, {user.FirstName} {user.LastName}");
                 Console.Read();
 
-                AccountMenu(user); // отваря менюто на клиента
+                Display.AccountMenu(); // отваря менюто на клиента
             }
             else
             {
@@ -111,8 +111,8 @@ namespace BankVM
         public static void SendMoney(Person user)
         {
             Console.Write("Въведете IBAN на получателя: ");
-            int recipientIban = int.Parse(Console.ReadLine());
-            Person recipient = People.FirstOrDefault(p => p.IBAN == recipientIban);//help
+            string recipientIban = Console.ReadLine();
+            Person recipient = People.FirstOrDefault(p => p.IBAN == recipientIban);//help и може ли това да се направи така? със стринг
             if (recipient != null)
             {
                 Console.Write("Сума за изпращане (в евро): ");
