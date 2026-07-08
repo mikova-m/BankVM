@@ -31,10 +31,10 @@ namespace BankVM
 
             switch (choose)//Има грешка
             {
-                case 1: Person.AddMoney(Person.currentPerson); break;
+                case 1: Person.AddMoney(); break;
                 case 2: Person.GetMoney(); break;
                 case 3: Person.SendMoney(); break;
-                case 4: Person.ChangePass(); break;
+                case 4: Person.ChangePassword(); break;
                 default: Environment.Exit(0); break;
             }
 
