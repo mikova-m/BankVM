@@ -34,7 +34,7 @@ namespace BankVM
 
         }
 
-        static public Person Login() //за да може да се използва в другия клас
+        public static Person Login() //за да може да се използва в другия клас
         {
             while (true)
             {

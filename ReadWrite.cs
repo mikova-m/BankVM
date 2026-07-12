@@ -45,7 +45,7 @@ namespace BankVM
             lines.Add(antetka);
             foreach (Person c in Person.People) //обикаля
             {
-                string info = c.ToString();//извлича като цсв текст
+                string info = c.PersonInfoAsCSV();//извлича като цсв текст
                 lines.Add(info);
             }
             File.WriteAllLines(_filePath, lines);//Същински запис във файла
