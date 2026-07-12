@@ -160,15 +160,10 @@ namespace BankVM
             }
         }
 
-        public static void Exit(Person user)
+        public string PersonInfoAsCSV()
         {
-            ReadWrite.UpdatePeopleFile();
-            Console.WriteLine("Данните са записани. Излизане от системата...");
-            Console.ReadKey();
-            Login();
+            string info = $"{ID}, {FirstName}, {LastName}, {Age}, {IBAN}, {Amount}, {Pass}";
+            return info;
         }
-
-
-
     }
 }
