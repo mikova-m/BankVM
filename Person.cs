@@ -18,11 +18,11 @@ namespace BankVM
         public string LastName { get; set; }
         public int Age { get; set; }
         public string IBAN { get; set; }
-        public decimal Amount { get; set; } //"decimal" се използва за финансови изчисления
+        public double Amount { get; set; } //"decimal" се използва за финансови изчисления
         public string Pass { get; set; }
 
 
-        public Person(int id, string firstName, string lastName, int age, string iban, decimal amount, string pass)
+        public Person(int id, string firstName, string lastName, int age, string iban, double amount, string pass)
         {
             ID = id;
             FirstName = firstName;
@@ -63,8 +63,10 @@ namespace BankVM
                 if (user != null)
                 {
                     Console.WriteLine("Успешен вход!");
-                    Console.WriteLine($"Добре дошъл, {user.FirstName} {user.LastName}");
-                    Console.ReadLine();
+                    Console.WriteLine($"ДОБРЕ ДОШЪЛ,");
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine($"=== {user.FirstName} {user.LastName} ===");
+                    Console.ResetColor();
 
                     Display.AccountMenu(user); // отваря менюто на клиента
                 }
@@ -80,7 +82,7 @@ namespace BankVM
         public static void AddMoney(Person user)
         {
             Console.Write("Сума за добавяне (в евро): ");
-            decimal amountToAdd = decimal.Parse(Console.ReadLine());
+            double amountToAdd = double.Parse(Console.ReadLine());
 
             if (amountToAdd > 0)
             {
@@ -97,7 +99,7 @@ namespace BankVM
         public static void GetMoney(Person user)
         {
             Console.Write("Сума за теглене (в евро): ");
-            decimal amountToGet = decimal.Parse(Console.ReadLine());
+            double amountToGet = double.Parse(Console.ReadLine());
             if (amountToGet > 0 && amountToGet <= user.Amount)
             {
                 user.Amount -= amountToGet;
@@ -146,7 +148,7 @@ namespace BankVM
             }
 
             Console.Write("Сума за изпращане (в евро): ");
-            decimal amountToSend = decimal.Parse(Console.ReadLine());
+            double amountToSend = double.Parse(Console.ReadLine());
 
             if (amountToSend > 0 && amountToSend <= user.Amount)
             {

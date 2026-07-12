@@ -26,7 +26,7 @@ namespace BankVM
                 string lastName = parts[2];
                 int age = int.Parse(parts[3]);
                 string iban = parts[4];
-                decimal amount = decimal.Parse(parts[5]);
+                double amount = double.Parse(parts[5]);
                 string pass = parts[6];
 
                 Person person = new Person(id, firstName, lastName, age, iban, amount, pass);
