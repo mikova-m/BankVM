@@ -34,22 +34,10 @@ namespace BankVM
 
                 switch (choose)//Има грешка
                 {
-                    case 1: 
-                        Person.AddMoney(user);
-                        ReadWrite.UpdatePeopleFile(); 
-                        break;
-                    case 2:
-                        Person.GetMoney(user);
-                        ReadWrite.UpdatePeopleFile();
-                        break;
-                    case 3: 
-                        Person.SendMoney(user);
-                        ReadWrite.UpdatePeopleFile(); 
-                        break;
-                    case 4: 
-                        Person.ChangePassword(user);
-                        ReadWrite.UpdatePeopleFile();
-                        break;
+                    case 1: Person.AddMoney(user);break;                       
+                    case 2: Person.GetMoney(user);break;                                                
+                    case 3: Person.SendMoney(user);break;               
+                    case 4: Person.ChangePassword(user);break;                      
                     case 5:
                         ReadWrite.UpdatePeopleFile(); // записва промените във файла
                         Console.WriteLine("Излизане от акаунта...(натиснете enter)");
