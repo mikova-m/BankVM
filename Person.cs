@@ -34,41 +34,45 @@ namespace BankVM
 
         }
 
-        static void Login()
+        static void Login()//-
         {
-            Console.Clear();
-
-            Console.Write("Въведете ID: ");
-            int id = int.Parse(Console.ReadLine());
-
-            Console.Write("Въведете парола: ");
-            string pass = Console.ReadLine();
-
-
-            Person user = null;
-
-            foreach (Person c in People)
+            while (true)
             {
-                if (c.ID == id && c.Pass == pass)
+                Console.Clear();
+                Console.WriteLine("====== Вход в банката ======");// in profile
+
+                Console.Write("Въведете ID: ");
+                int id = int.Parse(Console.ReadLine());
+
+                Console.Write("Въведете парола: ");
+                string pass = Console.ReadLine();
+
+
+                Person user = null;
+
+                foreach (Person c in People)
                 {
-                    user = c;
-                    break;
+                    if (c.ID == id && c.Pass == pass)
+                    {
+                        user = c;
+                        break;
+                    }
                 }
-            }
 
 
-            if (user != null)
-            {
-                Console.WriteLine("Успешен вход!");
-                Console.WriteLine($"Добре дошъл, {user.FirstName} {user.LastName}");
-                Console.Read();
+                if (user != null)
+                {
+                    Console.WriteLine("Успешен вход!");
+                    Console.WriteLine($"Добре дошъл, {user.FirstName} {user.LastName}");
+                    Console.ReadLine();
 
-                Display.AccountMenu(); // отваря менюто на клиента
-            }
-            else
-            {
-                Console.WriteLine("Грешно ID или парола!");
-                Console.ReadKey();
+                    Display.AccountMenu(user); // отваря менюто на клиента
+                }
+                else
+                {
+                    Console.WriteLine("Грешно ID или парола!");
+                    Console.ReadLine();
+                }
             }
         }
 
@@ -81,7 +85,8 @@ namespace BankVM
             if (amountToAdd > 0)
             {
                 user.Amount += amountToAdd;
-                Console.WriteLine($"Успешно добавихте {amountToAdd} евро. Нов баланс: {user.Amount} евро.");
+                Console.WriteLine($"Успешно добавихте {amountToAdd} евро");
+                Console.WriteLine($"Баланс: {user.Amount} евро.");
             }
             else
             {
@@ -112,6 +117,7 @@ namespace BankVM
         {
             Console.Write("Въведете IBAN на получателя: ");
             string recipientIban = Console.ReadLine();
+
             Person recipient = People.FirstOrDefault(p => p.IBAN == recipientIban);//help и може ли това да се направи така? със стринг
             if (recipient != null)
             {
