@@ -68,13 +68,14 @@ namespace BankVM
                     Console.WriteLine($"=== {user.FirstName} {user.LastName} ===");
                     Console.ResetColor();
 
-                    Display.AccountMenu(user); // отваря менюто на клиента
+                  //  Display.AccountMenu(user); // отваря менюто на клиента
                 }
                 else
                 {
                     Console.WriteLine("Грешно ID или парола!");
                     Console.ReadLine();
                 }
+                return user;
             }
         }
 
@@ -103,6 +104,7 @@ namespace BankVM
             if (amountToGet > 0 && amountToGet <= user.Amount)
             {
                 user.Amount -= amountToGet;
+                ReadWrite.UpdatePeopleFile();// NOT SURE
                 Console.WriteLine($"Успешно изтеглихте {amountToGet} евро. Нов баланс: {user.Amount} евро.");
             }
             else if (amountToGet > user.Amount)
