@@ -52,7 +52,7 @@ namespace BankVM
 
                 foreach (Person c in People)
                 {
-                    if (c.ID == id && c.Pass == pass)
+                    if (c.ID == id && c.Pass.Trim() == pass.Trim())
                     {
                         user = c;
                         break;
@@ -80,6 +80,7 @@ namespace BankVM
         }
 
 
+        // ДЕСЕТИЧНИТЕ ДРОБИ ГИ ПИШЕМ СЪС ЗАПЕТАЯ, А НЕ С ТОЧКА
         public static void AddMoney(Person user)
         {
             Console.Write("Сума за добавяне (в евро): ");
@@ -124,16 +125,13 @@ namespace BankVM
 
             Person recipient = null;
             foreach (Person p in People)
-
-                if (recipient != null)
-
-                {
-                    if (p.IBAN == recipientIban)
+            {
+                    if (p.IBAN.Trim() == recipientIban.Trim())//Ако все пак сме пропуснали интервал
                     {
                         recipient = p;
                         break;
                     }
-                }
+            }    
 
             if (recipient == null)
             {

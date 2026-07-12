@@ -52,7 +52,7 @@ namespace BankVM
                         break;
                     case 5:
                         ReadWrite.UpdatePeopleFile(); // записва промените във файла
-                        Console.WriteLine("Излизане от акаунта");
+                        Console.WriteLine("Излизане от акаунта...(натиснете enter)");
                         Console.ReadLine();
                         return;
                     default: Environment.Exit(0); break;

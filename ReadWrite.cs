@@ -21,13 +21,13 @@ namespace BankVM
             {
                 string[] parts = lines[i].Split(',');
 
-                int id = int.Parse(parts[0]);
-                string firstName = parts[1];
-                string lastName = parts[2];
-                int age = int.Parse(parts[3]);
-                string iban = parts[4];
-                double amount = double.Parse(parts[5]);
-                string pass = parts[6];
+                int id = int.Parse(parts[0].Trim());//за да се премахва интервал след запетая -> Trim()
+                string firstName = parts[1].Trim();
+                string lastName = parts[2].Trim();
+                int age = int.Parse(parts[3].Trim());
+                string iban = parts[4].Trim();
+                double amount = double.Parse(parts[5].Trim());
+                string pass = parts[6].Trim();
 
                 Person person = new Person(id, firstName, lastName, age, iban, amount, pass);
                 people.Add(person);
