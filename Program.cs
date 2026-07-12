@@ -12,7 +12,13 @@ namespace BankVM
         static void Main(string[] args)
         {
             Person.People = ReadWrite.ReadPeople();
-            Display.AccountMenu();
+
+            while (true)
+            { 
+                Person user = Person.Login();
+                Display.AccountMenu(user);
+            }
+
         }
     }
 }

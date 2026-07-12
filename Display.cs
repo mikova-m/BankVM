@@ -43,8 +43,6 @@ namespace BankVM
                     return;
                 default: Environment.Exit(0); break;
             }
-
-            AccountMenu(user);// ne sme sigurni dali trqbva
         }
     }
 }
