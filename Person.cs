@@ -59,7 +59,6 @@ namespace BankVM
                     }
                 }
 
-
                 if (user != null)
                 {
                     Console.WriteLine("Успешен вход!");
@@ -67,15 +66,13 @@ namespace BankVM
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine($"=== {user.FirstName} {user.LastName} ===");
                     Console.ResetColor();
-
-                  //  Display.AccountMenu(user); // отваря менюто на клиента
+                    return user;
                 }
                 else
                 {
                     Console.WriteLine("Грешно ID или парола!");
                     Console.ReadLine();
-                }
-                return user;
+                }                
             }
         }
 

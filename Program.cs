@@ -17,10 +17,8 @@ namespace BankVM
             while (true)
             { 
                 Person user = Person.Login();
-                if (user != null)
-                {
-                    Display.AccountMenu(user);
-                }
+                Display.AccountMenu(user);
+
             }
         }
     }
