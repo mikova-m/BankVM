@@ -104,7 +104,6 @@ namespace BankVM
             if (amountToGet > 0 && amountToGet <= user.Amount)
             {
                 user.Amount -= amountToGet;
-                ReadWrite.UpdatePeopleFile();// NOT SURE
                 Console.WriteLine($"Успешно изтеглихте {amountToGet} евро. Нов баланс: {user.Amount} евро.");
             }
             else if (amountToGet > user.Amount)

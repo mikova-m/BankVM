@@ -21,7 +21,6 @@ namespace BankVM
                     Display.AccountMenu(user);
                 }
             }
-
         }
     }
 }
