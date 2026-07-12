@@ -168,7 +168,7 @@ namespace BankVM
         {
             Console.Write("Въведете нова парола: ");
             string newPassword = Console.ReadLine();
-            if (!string.IsNullOrWhiteSpace(newPassword))//help 
+            if (!string.IsNullOrWhiteSpace(newPassword))//дали в променливата newPassword (новата парола) е въведен реален текст.
             {
                 user.Pass = newPassword;
                 Console.WriteLine("Паролата е успешно променена.");
