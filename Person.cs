@@ -118,32 +118,53 @@ namespace BankVM
             Console.Write("Въведете IBAN на получателя: ");
             string recipientIban = Console.ReadLine();
 
-            Person recipient = People.FirstOrDefault(p => p.IBAN == recipientIban);//help и може ли това да се направи така? със стринг
-            if (recipient != null)
+
+            Person recipient = null;
+            foreach (Person p in People)
+
+                if (recipient != null)
+
+                {
+                    if (p.IBAN == recipientIban)
+                    {
+                        recipient = p;
+                        break;
+                    }
+                }
+
+            if (recipient == null)
             {
-                Console.Write("Сума за изпращане (в евро): ");
-                decimal amountToSend = decimal.Parse(Console.ReadLine());
-                if (amountToSend > 0 && amountToSend <= user.Amount)
-                {
-                    user.Amount -= amountToSend;
-                    recipient.Amount += amountToSend;
-                    Console.WriteLine($"Успешно изпратихте {amountToSend} евро на {recipient.FirstName} {recipient.LastName}. Нов баланс: {user.Amount} евро.");
-                }
-                else if (amountToSend > user.Amount)
-                {
-                    Console.WriteLine("Недостатъчен баланс за тази операция.");
-                }
-                else
-                {
-                    Console.WriteLine("Моля, въведете положителна сума.");
-                }
+                Console.WriteLine("Не съществува клиент с този IBAN.");
+                return;
+            }
+
+            //Не позволяваме превод към самия себе си.
+            if (recipient == user)
+            {
+                Console.WriteLine("Не можете да прехвърляте пари към себе си.");
+                return;
+            }
+
+            Console.Write("Сума за изпращане (в евро): ");
+            decimal amountToSend = decimal.Parse(Console.ReadLine());
+
+            if (amountToSend > 0 && amountToSend <= user.Amount)
+            {
+                user.Amount -= amountToSend;
+                recipient.Amount += amountToSend;
+                Console.WriteLine($"Успешно изпратихте {amountToSend} евро на {recipient.FirstName} {recipient.LastName}");
+                Console.WriteLine($"Нов баланс: {user.Amount} евро.");
+            }
+            else if (amountToSend > user.Amount)
+            {
+                Console.WriteLine("Недостатъчен баланс за тази операция.");
             }
             else
             {
-                Console.WriteLine("Не съществува потребител с този IBAN.");
+                Console.WriteLine("Моля, въведете положителна сума.");
             }
-
         }
+
 
         public static void ChangePassword(Person user)
         {
@@ -165,5 +186,6 @@ namespace BankVM
             string info = $"{ID}, {FirstName}, {LastName}, {Age}, {IBAN}, {Amount}, {Pass}";
             return info;
         }
+
     }
 }
