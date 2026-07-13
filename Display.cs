@@ -18,7 +18,7 @@ namespace BankVM
                 Console.WriteLine("1) Добавяне на пари (депозит) ");
                 Console.WriteLine("2) Изтегляне на пари");
                 Console.WriteLine("3) Прехвърляне на пари към друг клиент");
-                Console.WriteLine("4) Смяна на паролата");
+                Console.WriteLine("4) Смяна на паролата"); //efefef
 
                 Console.WriteLine("5) Изход от акаунт");
 
