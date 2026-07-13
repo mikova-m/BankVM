@@ -4,8 +4,10 @@ namespace BankVM
 {
     internal class Display
     {
-         public static void AccountMenu(Person user)
+         public static void AccountMenu()
          {
+            Person user = Program.ActiveUser; // взимаме активния потребител от Program.cs
+
             while (true)
             {
                 Console.ForegroundColor = ConsoleColor.Magenta;
@@ -30,7 +32,8 @@ namespace BankVM
 
                 switch (choose)//Има грешка
                 {
-                    case 1: Person.AddMoney(user);break;                       
+                    //case 1: Person.AddMoney(user);break; 
+                    case 1: user.AddMoneyUsingInstancion();break;    
                     case 2: Person.GetMoney(user);break;                                                
                     case 3: Person.SendMoney(user);break;               
                     case 4: Person.ChangePassword(user);break;                      

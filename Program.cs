@@ -4,14 +4,16 @@ namespace BankVM
 {
     internal class Program
     {
+        public static Person ActiveUser = null;
+
         static void Main(string[] args)
         {
             Person.People = ReadWrite.ReadPeople();
 
             while (true)
-            { 
-                Person user = Person.Login();
-                Display.AccountMenu(user);
+            {
+                ActiveUser = Person.Login();
+                Display.AccountMenu();
 
             }
         }

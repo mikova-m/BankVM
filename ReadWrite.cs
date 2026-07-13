@@ -5,7 +5,7 @@ namespace BankVM
 {
     internal class ReadWrite
     {
-        static string _filePath = @"..\..\Data\info.txt";
+        static string _filePath = @"..\..\Data\info";
 
         public static List<Person> ReadPeople()
         {

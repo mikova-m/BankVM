@@ -89,6 +89,23 @@ namespace BankVM
             }
         }
 
+        public void AddMoneyUsingInstancion()
+        {
+            Console.Write("Сума за добавяне (в евро): ");
+            double amountToAdd = double.Parse(Console.ReadLine());
+
+            if (amountToAdd > 0)
+            {
+                this.Amount += amountToAdd;
+                Console.WriteLine($"Успешно добавихте {amountToAdd} евро");
+                Console.WriteLine($"Баланс: {Amount} евро.");
+            }
+            else
+            {
+                Console.WriteLine("Моля, въведете положителна сума.");
+            }
+        }
+
         public static void GetMoney(Person user)
         {
             Console.Write("Сума за теглене (в евро): ");
@@ -111,7 +128,7 @@ namespace BankVM
         public static void SendMoney(Person user)
         {
             Console.Write("Въведете IBAN на получателя: ");
-            string recipientIban = Console.ReadLine();
+            string recipientIban = Console.ReadLine().ToUpper();
 
 
             Person recipient = null;
